@@ -13,44 +13,53 @@
         <div class="col-sm-7">
             <form action="{% url 'edit_task' task.id %}" method="POST"> 
                 {%  csrf_token %} 
-              <div class="form-group">
+                <div class="form-group">
                 <label for="title">Title:</label>
                 <input type="text" class="form-control" id="title" value="{{task.title}}"  placeholder="Enter title" name="title">
-              </div>
-            </br>
-              <div class="form-group">
+                </div>
+                </br>
+                <div class="form-group">
                 <label for="description">Description:</label>
-                  <textarea class="form-control" name="description">{{task.description}}</textarea>
+                <input type="text" class="form-control" id="title" value="{{task.desciption}}"  placeholder="Enter description" name="description">
+                </div>
+               </br>                
+               <div class="form-group">
+               <label for="due_date">Due Date</label><br>
+               <input type="datetime-local" id="due_date" class="form-control" name="due_date" value="{{ task.due_date|date:'Y-m-d H:i'}}" required>
+               <!-- <input type="datetime-local" class="form-control"  id="title" value="{{task.due_date}}"name="due_date"> -->
+               </div>
+               </br>
+               <div class="form-group">
+               <label for="reminder_time">Reminder Time:</label><br>
+               <input type="datetime-local" id="reminder_time" class="form-control" name="reminder_time" value="{{ task.reminder_time|date:'Y-m-d H:i'}}" required>
+               <!-- <input type="datetime-local" class="form-control" value= "{{task.reminder_time}}" id="title" name="reminder_time">  -->
+               </div>
+               <div class="form-group">
+               <label for="title">Priority</label>
+
+               <select id="priority" name="priority" required  class="form-control">
+                <option value="1" {% if task.priority == '1' %}selected{% endif %}>High</option>
+                <option value="2" {% if task.priority == '2' %}selected{% endif %}>Medium</option>
+                <option value="3" {% if task.priority == '3' %}selected{% endif %}>Low</option>
+            </select> 
               </div>
-            </br>                
-            <div class="form-group">
-              <label for="due_date">Due Date</label>
-              <input type="datetime-local" class="form-control" value="{{task.duedate}}" id="duedate" name="duedate">
-            </div>
-          </br>
-          <div class="form-group">
-            <label for="reminder_time">Reminder Time:</label><br>
-            <input type="datetime-local" class="form-control" value= "{{task.remindertime}}" id="remindertime" name="reminder_time"> 
-          </div>
-          <div class="form-group">
-            <label for="title">Priority</label>
-                    <select name="priority" id="priority" class="form-control">
-                        <option value="1">High</option>
-                        <option value="2">Medium</option>
-                        <option value="3">Low</option>
-                    </select>
-          </div>
-      </br>
-      <div class="form-group">
-        <label for="category">Category</label>
-        <select class="form-control" id="category" name="category" required>
-            <option value="">Select Category</option>
-            <option value="urgent" {% if task.category.name == 'urgent' %}selected{% endif %}>Urgent</option>
-            <option value="personal" {% if task.category.name == 'personal' %}selected{% endif %}>Personal</option>
-            <option value="work" {% if task.category.name == 'work' %}selected{% endif %}>Work</option>
-        </select>
-    </div>
-</br>       
+              </br>
+              <div class="form-group">
+              <label for="category">Category</label>
+              <select id="category" class="form-control" name="category" required>
+                <option value="urgent" {% if task.category.name == 'urgent' %}selected{% endif %}>Urgent</option>
+                <option value="personal" {% if task.category.name == 'personal' %}selected{% endif %}>Personal</option>
+                <option value="work" {% if task.category.name == 'work' %}selected{% endif %}>Work</option>
+            </select>
+        
+              <!-- <select class="form-control" id="category" name="category" required>
+              <option value="">Select Category</option>
+              <option value="urgent" {% if task.category.name == 'urgent' %}selected{% endif %}>Urgent</option>
+              <option value="personal" {% if task.category.name == 'personal' %}selected{% endif %}>Personal</option>
+              <option value="work" {% if task.category.name == 'work' %}selected{% endif %}>Work</option>
+             </select> -->
+        </div>
+       </br>       
 
     <button type="submit" class="btn btn-primary">Update Task</button>
     </form>

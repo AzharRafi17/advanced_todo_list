@@ -30,7 +30,6 @@
               <li><a href="{% url 'register' %}">Register</a></li>
           {% else %}
               <!-- If the user is authenticated, show logout -->
-                  <li><a href="{% url 'pending_task'%}"> Pending Tasks</a></li>
                   <div class="navbar-right">
                   <a href="{% url 'logout' %}">Logout</a>
                   </div>
@@ -216,7 +215,7 @@
       </table>
       
   </div>
-  <script>
+  <!-- <script>
     function showNotification() {
         if (Notification.permission === "granted") {
             new Notification("Reminder: You have a pending task!");
@@ -236,7 +235,7 @@
             showNotification();
         }
     };
-</script>
+</script> -->
 </script>
 </body>
 

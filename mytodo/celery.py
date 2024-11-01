@@ -16,11 +16,19 @@ app.conf.update(timezone = 'Asia/Karachi')
 
 app.config_from_object(settings, namespace='CELERY')
 
+# Set the task serializer and result serializer
+app.conf.task_serializer = 'json'
+app.conf.result_serializer = 'json'
+
+# Set the start method for Windows
+app.conf.worker_concurrency = 4  # Adjust as needed
+app.conf.task_always_eager = False  # Set to True for testing purposes
+
 # Celery Beat Settings
 app.conf.beat_schedule = {
     'send-due-task-reminders-every-day': {
         'task': 'todo.tasks.send_task_reminder',
-        'schedule': crontab(hour=17, minute=29),  
+        'schedule': crontab(hour=13, minute=10),  
     },
 }
 

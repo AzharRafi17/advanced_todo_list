@@ -149,6 +149,6 @@ EMAIL_HOST = 'smtp.gmail.com'  # Replace with your email provider's SMTP server
 EMAIL_PORT = 587  # Commonly used port for TLS
 EMAIL_USE_TLS = True  # Use TLS for security
 EMAIL_HOST_USER = 'muhammadazharali17@gmail.com'  # Your email address
-EMAIL_HOST_PASSWORD = 'tejo xzqw aalg rwcv'  # Your email password
+EMAIL_HOST_PASSWORD = 'yuvz bxee wpfn ndbg'  # Your email password
 EMAIL_USE_SSL = False
 DEFAULT_FROM_EMAIL = 'Celery <muhammadazharali17@gmail.com>'
